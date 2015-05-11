@@ -1,0 +1,10 @@
+.idea
+out
+*.iml
+*.iml*
+target
+.classpath
+.project
+auth
+*.jar
+*~

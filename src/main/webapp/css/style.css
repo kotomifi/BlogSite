@@ -1,0 +1,325 @@
+@charset "utf-8";
+
+body
+,
+ul
+,
+ol
+,
+li
+,
+p
+,
+h1
+,
+h2
+,
+h3
+,
+h4
+,
+h5
+,
+h6
+,
+form
+,
+fieldset
+,
+table
+,
+td
+,
+img
+,
+div
+,
+dl
+,
+dt
+,
+dd
+,
+input
+,
+{
+margin
+:
+ 
+0;
+padding
+:
+ 
+0;
+}
+
+body {
+	font-size: 12px;
+	padding-top: 70px;
+}
+
+img {
+	border: none;
+}
+
+li {
+	list-style: none;
+}
+
+input, select, textarea {
+	outline: none;
+}
+
+textarea {
+	resize: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+/*清楚浮动*/
+.clearfix:after {
+	content: "";
+	display: block;;
+	clear: both;
+}
+
+.clearfix {
+	zoom: 1;
+}
+
+body {
+	font-family: "微软雅黑", "宋体", Arial;
+	background: #e5e5e5 url("../img/mooning.jpg");
+	overflow-x: hidden;
+}
+
+.shadow {
+	width: 100%;
+	height: 150px;
+	position: absolute;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0, 0, 0, 0.2)), color-stop(100%,rgba(255, 255, 255, 0)));
+	border-top: 1px solid #e0e0e0;
+	z-index: -999;
+}
+
+#home {
+	overflow: auto;
+	width: 100%;
+}
+
+#header {
+	width: 100%;
+	background-color: black;
+	opacity: 0.4;
+}
+
+#navigator {
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	clear: both;
+	height: 60px;
+	line-height: 60px;
+	overflow: hidden;
+}
+
+#navigator ul {
+	list-style: none;
+}
+
+#navigator ul li {
+	float: left;
+	margin-left: 40px;
+}
+
+#navigator ul li a {
+	color: #FFF;
+	font-weight: bolder;
+	display: block;
+	height: 22px;
+	padding: .05em 1em;
+	font-size: 1.3em;
+	text-align: center;
+}
+
+#main {
+	margin: 20px auto 0;
+}
+
+#mainContent {
+	overflow: hidden;
+	float: left;
+}
+
+.container_mid {
+	margin: 0 auto;
+	margin-top: 60px;
+	background-color: white;
+	opacity: 0.8;
+	border-radius: 5px;
+	padding: 20px 10px 20px 20px;
+	font-size: medium;
+
+	-moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+	-webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+	box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+}
+
+.forFlow {
+	float: none;
+	width: auto;
+}
+
+.clear {
+	clear: both;
+}
+
+.postDesc {
+	float: right;;
+	width: 100%;
+	clear: both;
+	text-align: right;
+	padding-right: 5px;
+	color: #a8b1ba;
+	margin-top: 25px;
+}
+
+.postTitle {
+	color: #464646;
+	font-size: 20px;
+	font-weight: bold;
+	padding-bottom: 10px;
+	padding-left: 30px;
+	padding-top: 40px;
+	line-height: 1em;
+	border-bottom: 1px dashed #FFF;
+}
+
+.postTitle a {
+	color: #464646;
+}
+
+.postCon {
+	width: 100%;
+	clear: both;
+	padding: 10px 0;
+	text-indent: 2em;
+}
+
+.c_b_p_desc {
+	color: #888888;
+	line-height: 24px;
+	padding: 10px;
+}
+
+.c_b_p_desc_readmore {
+	padding-left: 5px;
+}
+
+.sideBar {
+	min-height: 200px;
+}
+
+footer {
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+
+footer p {
+	clear: both;
+	text-align: center;
+	margin: 0;
+	padding-top: 5px;
+	color: white;
+}
+
+.topReading, .labels {
+	border: solid 1px;
+	background-color: black;
+	opacity: 0.6;
+	border-radius: 5px;
+}
+
+.topReading h3, .labels h3 {
+	color: white;
+	padding-left: 5px;
+	margin-left: 10px;
+	padding-top: 10px;
+	padding_right: 20px;
+	padding-bottom: -20px;
+	margin-bottom: -10px;
+}
+
+.labels ul, .topReading ul {
+	list-style: none;
+}
+
+.labels ul li, .topReading ul li {
+	padding-bottom: 10px;
+	color: #DF7401;
+	font-weight: bold;
+}
+
+.labels ul li a, .topReading ul li a {
+	color: #DF7401;
+}
+
+.topReading hr, .labels hr {
+	margin: 0;
+	margin-bottom: 10px;
+}
+
+.title_bar {
+	width: 100%;
+	height: 100px;
+	/*background-color: #00688B;*/
+	background-color: black;
+	opacity: 0.3;
+	color: #FFF;
+	text-align: center;
+}
+
+.title_bar h1 {
+	padding: 20px 0 0 0;
+	margin: 0;
+}
+
+.day {
+	background-color: white;
+	opacity: 0.8;
+	margin-top: 20px;
+	padding: 10px 5px 10px 10px;
+	border-radius: 5px;
+	height: 250px;
+
+	-moz-box-shadow: 2px 2px 10px #909090;/*firefox*/
+	-webkit-box-shadow: 2px 2px 10px #909090;/*safari或chrome*/
+	box-shadow:2px 2px 10px #909090;/*opera或ie9*/
+}
+
+.my_article {
+	background-color: white;
+	opacity: 0.8;
+	margin-top: 20px;
+	padding: 10px 5px 10px 10px;
+	border-radius: 10px;
+}
+
+footer hr {
+	width: 60%;
+	color: #000;
+}
+
+.p_md h3 {
+	color: #FFF;
+	text-align: center
+}
+
+.xia_table tr td a {
+	color: #FFF;
+}
+
+
+

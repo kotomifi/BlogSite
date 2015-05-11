@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--这块等于dao接口的实现 namespace必须和接口的类路径一样 -->
+<mapper namespace="com.apping.blog.mapper.TagMapper">
+    <sql id="tag_fields">
+        tag_name, blog_id
+    </sql>
+
+    <resultMap id="tagResultMap" type="Tag">
+        <result property="blog_id" column="blog_id" />
+        <result property="tag_name" column="tag_name" />
+    </resultMap>
+
+    <resultMap id="tagViewResultMap" type="TagView">
+        <result property="tag_name" column="tag_name" />
+        <result property="blog_count" column="blog_count" />
+    </resultMap>
+
+
+    <insert id="add" parameterType="Tag" keyProperty="tag_name" >
+        INSERT INTO
+        tag(
+        <include refid="tag_fields" />
+        )
+        VALUES (#{tag_name}, #{blog_id});
+    </insert>
+
+    <select id="getTags" parameterType="map" resultMap="tagViewResultMap">
+        SELECT DISTINCT
+        tag_name, count(*) as blog_count FROM tag GROUP BY tag_name
+    </select>
+
+    <update id="update" parameterType="Tag">
+        UPDATE tag
+        SET
+        tag_name = #{tag_name}
+        WHERE blog_id = #{blog_id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long">
+        DELETE FROM tag
+        WHERE blog_id = #{blog_id}
+    </delete>
+</mapper>

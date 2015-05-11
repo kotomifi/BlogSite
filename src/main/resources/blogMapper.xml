@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--这块等于dao接口的实现 namespace必须和接口的类路径一样 -->
+<mapper namespace="com.apping.blog.mapper.BlogMapper">
+    <sql id="blog_fields">
+        blog_id, blog_file, blog_date, blog_title, blog_author, blog_abstract, blog_modified
+    </sql>
+
+    <resultMap id="blogResultMap" type="Blog">
+        <result property="blog_id" column="blog_id" />
+        <result property="blog_file" column="blog_file" />
+        <result property="blog_date" column="blog_date" />
+        <result property="blog_title" column="blog_title" />
+        <result property="blog_author" column="blog_author" />
+        <result property="blog_abstract" column="blog_abstract" />
+        <result property="blog_modified" column="blog_modified" />
+    </resultMap>
+
+    <select id="findById" parameterType="HashMap" resultType="Blog">
+        select
+        <include refid="blog_fields" />
+        from blog where blog_id=#{blog_id}
+    </select>
+
+    <select id="findByFileName" parameterType="HashMap" resultType="Blog">
+        select
+        <include refid="blog_fields" />
+        from blog where blog_file=#{blog_file}
+    </select>
+
+    <select id="getTopBlogs" parameterType="java.lang.Integer" resultMap="blogResultMap">
+        SELECT
+        <include refid="blog_fields" />
+        FROM blog ORDER BY blog_id DESC LIMIT #{limit}
+    </select>
+
+    <select id="getMoreBlogs" parameterType="map" resultMap="blogResultMap">
+        SELECT
+        <include refid="blog_fields" />
+        FROM blog WHERE blog_id &lt; #{position} ORDER BY blog_id DESC LIMIT #{limit}
+    </select>
+
+    <insert id="add" parameterType="Blog" keyProperty="blog_id" >
+        INSERT INTO
+        blog(
+        <include refid="blog_fields" />
+        )
+        VALUES (#{blog_id}, #{blog_file}, #{blog_date}, #{blog_title}, #{blog_author}, #{blog_abstract}, #{blog_modified});
+    </insert>
+
+    <update id="update" parameterType="Blog" keyProperty="blog_id" >
+        UPDATE blog
+        SET
+        blog_id = #{blog_id}
+        blog_date = #{blog_date},
+        blog_title = #{blog_title},
+        blog_author = #{blog_author},
+        blog_abstract = #{blog_abstract},
+        blog_modified = #{blog_modified}
+    </update>
+
+    <delete id="delete" parameterType="Blog">
+        DELETE FROM blog
+        WHERE blog_id = #{blog_id}
+    </delete>
+
+    <delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM blog
+        WHERE blog_id = #{blog_id}
+    </delete>
+
+    <select id="getByTag" parameterType="java.lang.String" resultMap="blogResultMap">
+        SELECT
+        p1.blog_id, p1.blog_file, p1.blog_date, p1.blog_title, p1.blog_author, p1.blog_abstract, p1.blog_modified
+        FROM blog as p1 INNER JOIN tag as p2 ON
+        p1.blog_id = p2.blog_id
+        WHERE p2.tag_name = #{tagName}
+    </select>
+
+</mapper>
